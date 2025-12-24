@@ -1,0 +1,12 @@
+causage
+interfacecli
+interfacegui
+modele.audio
+modele.metadonnees
+modele.playlist
+services.lecteur
+services.listelecture
+services.MetadonneesExtractor
+services.mime
+services.scan
+services.systeme
