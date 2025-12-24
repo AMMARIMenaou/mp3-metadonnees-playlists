@@ -7,17 +7,13 @@ Application Java permettant :
    avec deux interfaces : **CLI (console)** et **GUI (graphique)**.
 
 ---
+## Liens GitHub
 
-## Liens GitHub (à adapter)
+### Dépôt principal (binôme)
+- Repo principal : https://github.com/AMMARIMenaou/mp3-metadonnees-playlists
 
-Repository :
-- https://github.com/<TON_USER>/<TON_REPO>
-
-Releases (JARs téléchargeables) :
-- https://github.com/<TON_USER>/<TON_REPO>/releases
-
-Issues / suivi bugs :
-- https://github.com/<TON_USER>/<TON_REPO>/issues
+### Dépôt du binôme
+- Repo du binôme : https://github.com/Rozo-ow/Java-MP3
 
 ---
 
