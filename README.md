@@ -106,18 +106,28 @@ Application Java permettant :
 - **Maven 3.9+** recommandé
 
 ---
+## Génération des JAR (CLI + GUI) — très détaillé
 
-## Génération des JAR (CLI + GUI) — détaillé
-
-Cette section explique comment produire des JAR exécutables pour :
+Cette section décrit une procédure **reproductible** pour produire des JAR **exécutables** pour :
 - le **mode CLI** (console) ;
-- le **mode GUI** (graphique) ;
-  et comment garantir que ça marche **chez le prof** (donc avec dépendances intégrées).
+- le **mode GUI** (graphique) ;  
+  avec un résultat **autonome** (dépendances incluses) afin d’éviter les erreurs classiques :
+- `ClassNotFoundException`
+- `NoClassDefFoundError`
+- `Unable to initialize main class ...`
 
-### 1) Prérequis pour générer les JAR
-Dans un terminal, vérifie que Java et Maven sont installés :
+> Objectif : obtenir **1 fichier JAR** par mode (CLI et GUI) qui se lance directement avec `java -jar ...`.
+
+---
+
+# 1) Prérequis pour générer les JAR
+
+## 1.1 verifications Java (JDK) et Maven
+
+Dans un terminal :
 
 ```bash
 java -version
 mvn -version
+
 
