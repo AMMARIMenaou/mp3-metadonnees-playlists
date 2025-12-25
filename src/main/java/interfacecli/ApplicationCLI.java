@@ -3,7 +3,7 @@ package interfacecli;
 import causage.GestionBibliotheque;
 import causage.GestionMetadata;
 import causage.GestionPlaylist;
-import interfacegui.ApplicationGUI;
+import interfacegui.FenetreAudioExplorer;
 import modele.audio.AudioFile;
 import modele.metadonnees.Metadata;
 import modele.playlist.PlaylistFormat;
@@ -22,7 +22,7 @@ import services.systeme.FileSystemPort;
 import services.systeme.FileUtils;
 import services.systeme.MimeTypeDetector;
 
-import javax.swing.*;
+import javax.swing.SwingUtilities;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -37,10 +37,10 @@ import java.util.List;
  */
 public class ApplicationCLI {
 
-    private  GestionBibliotheque gestionBibliotheque;
-    private  GestionMetadata gestionMetadata;
-    private  GestionPlaylist gestionPlaylist;
-    private  MimeChecker mimeChecker;
+    private GestionBibliotheque gestionBibliotheque;
+    private GestionMetadata gestionMetadata;
+    private GestionPlaylist gestionPlaylist;
+    private MimeChecker mimeChecker;
 
     /**
      * Initialise l’application CLI et instancie l’ensemble des dépendances.
@@ -92,10 +92,7 @@ public class ApplicationCLI {
         }
 
         if (contains(args, "--gui")) {
-            SwingUtilities.invokeLater(() -> {
-                ApplicationGUI f = new ApplicationGUI();
-                f.setVisible(true);
-            });
+            SwingUtilities.invokeLater(() -> new FenetreAudioExplorer().setVisible(true));
             return;
         }
 
@@ -185,12 +182,8 @@ public class ApplicationCLI {
      * @throws Exception en cas d’erreur d’analyse
      */
     public void analyserFichier(Path fichier) throws Exception {
-        if (fichier == null) {
-            throw new Exception("Fichier nul.");
-        }
-        if (!Files.exists(fichier)) {
-            throw new Exception("Fichier introuvable : " + fichier);
-        }
+        if (fichier == null) throw new Exception("Fichier nul.");
+        if (!Files.exists(fichier)) throw new Exception("Fichier introuvable : " + fichier);
 
         Path abs = fichier.toAbsolutePath();
         System.out.println("Analyse : " + abs);
@@ -315,19 +308,12 @@ public class ApplicationCLI {
         }
     }
 
-    /**
-     * Normalise une chaîne pour l’affichage console.
-     *
-     * @param s chaîne brute
-     * @return valeur formatée
-     */
+    /** Normalise une chaîne pour l’affichage console. */
     public String value(String s) {
         return (s == null || s.isBlank()) ? "-" : s.trim();
     }
 
-    /**
-     * Affiche l’aide et les modes d’utilisation de l’application.
-     */
+    /** Affiche l’aide et les modes d’utilisation de l’application. */
     public void afficherAide() {
         System.out.println("""
 Modes console :
@@ -342,13 +328,7 @@ Mode graphique :
 """);
     }
 
-    /**
-     * Vérifie la présence d’un argument dans la liste fournie.
-     *
-     * @param arr tableau d’arguments
-     * @param v valeur recherchée
-     * @return vrai si présent
-     */
+    /** Vérifie la présence d’un argument dans la liste fournie. */
     public boolean contains(String[] arr, String v) {
         for (String s : arr) {
             if (s.equalsIgnoreCase(v)) return true;

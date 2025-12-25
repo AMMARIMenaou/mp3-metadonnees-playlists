@@ -22,7 +22,7 @@ public class GestionPlaylist {
     /**
      * Fabrique fournissant le writer adapté au format de playlist.
      */
-    private FabriqueEcriturePlaylist writerFactory;
+    private final FabriqueEcriturePlaylist writerFactory;
 
     /**
      * Initialise le gestionnaire avec une fabrique de writers.
@@ -48,6 +48,7 @@ public class GestionPlaylist {
     public void genererPlaylist(List<AudioFile> fichiers,
                                 PlaylistFormat format,
                                 Path out) throws PlaylistWriteException {
+
         if (fichiers == null || fichiers.isEmpty()) {
             throw new IllegalArgumentException("La liste de fichiers ne doit pas être vide.");
         }
@@ -62,9 +63,7 @@ public class GestionPlaylist {
 
         int indice = 1;
         for (AudioFile fichier : fichiers) {
-            if (fichier == null) {
-                continue;
-            }
+            if (fichier == null) continue;
             PlaylistEntry entry = new PlaylistEntry(fichier, indice++);
             playlist.ajouterElement(entry);
         }

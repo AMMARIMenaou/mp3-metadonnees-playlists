@@ -83,7 +83,7 @@
 
                             <archive>
                                 <manifest>
-                                    <mainClass>interfacegui.ApplicationGUI</mainClass>
+                                    <mainClass>interfacegui.ApplicationGui</mainClass>
                                 </manifest>
                             </archive>
 
