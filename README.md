@@ -106,7 +106,7 @@ Application Java permettant :
 - **Maven 3.9+** recommandé
 
 ---
-## Génération des JAR (CLI + GUI) — très détaillé
+## Génération des JAR (CLI + GUI) 
 
 Cette section décrit une procédure **reproductible** pour produire des JAR **exécutables** pour :
 - le **mode CLI** (console) ;
